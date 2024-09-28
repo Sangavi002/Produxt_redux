@@ -1,6 +1,6 @@
 import React,{ useEffect } from "react";
 import {useDispatch,useSelector} from "react-redux";
-import { fetchProduct } from "./store/action";
+import { fetchProduct,fetchProductAsec,fetchProductDesc } from "./store/action";
 import "./App.css"
 
 export const App = () => {
@@ -11,9 +11,20 @@ export const App = () => {
     dispatch(fetchProduct())
   },[])
 
+  const handleAsec = () => {
+    dispatch(fetchProductAsec())
+  }
+
+  const handleDesc = () => {
+    dispatch(fetchProductDesc())
+  }
   return(
    <div>
     <h1>Product</h1>
+    <div>
+      <button onClick={handleAsec}>Asec</button>
+      <button onClick={handleDesc}>Desc</button>
+    </div>
     <div>
       {productData.isLoading ? 'Loading ...' :
       <div className='container'>
